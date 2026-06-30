@@ -10,5 +10,5 @@ class Post(db.Model):
     body: so.Mapped[str] = so.mapped_column(sa.Text)
     post_type: so.Mapped[str] = so.mapped_column(sa.String(16), index=True)
 
-    def __repr__(self):
-        return '<Post {} - {}>'.format(self.id, self.title)
+    def __repr__(self) -> None:
+        return f"<Post {self.id} - {self.title}>"
