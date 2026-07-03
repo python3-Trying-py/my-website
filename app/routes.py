@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request, url_for
 from app import app, db
 from app.models import Post
 import sqlalchemy as sa
@@ -7,7 +7,19 @@ import sqlalchemy as sa
 @app.route('/index')
 def index():
 
-    query = sa.select(Post).order_by(Post.id)
-    posts = db.session.scalars(query).all()
+    page = request.args.get('page', 1, type=int)
 
-    return render_template("index.html", title='Home Page', posts=posts)
+    query = sa.select(Post).order_by(Post.id.desc())
+    posts = db.paginate(query, page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+
+    next_url = url_for('index', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('index', page=posts.prev_num) \
+        if posts.has_prev else None
+
+    return render_template("index.html", title='Explore', posts=posts.items,
+                           next_url=next_url, prev_url=prev_url)
+
+@app.route('/links')
+def links():
+    return render_template("links.html")

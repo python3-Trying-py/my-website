@@ -1,10 +1,15 @@
-    <table>
-        <tr valign="top">
+    <table class="table table-hover">
+        <tr>
             <td>
-                <a>
+                <b>
                     {{ post.title }}
-                </a>
-                <br>{{ post.body }}
+                </b>
+                <br>
+                <p style="color: gray;">
+                {{ post.date_posted }}
+                </p>
+                <br>
+                {{ post.body }}
             </td>
         </tr>
     </table>
