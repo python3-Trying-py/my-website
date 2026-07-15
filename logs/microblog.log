@@ -1,5 +1,4 @@
-2026-06-08 20:50:57,678 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-06-08 20:51:03,474 ERROR: Exception on /index [GET] [in C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py:875]
+2026-07-14 23:08:40,078 ERROR: Exception on / [GET] [in C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,8 +9,9 @@ Traceback (most recent call last):
   File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\payta\Documents\pyDev\my-website\app\routes.py", line 13, in index
-    return render_template("index.html", title='Home Page', posts=posts)
+  File "C:\Users\payta\Documents\pyDev\my-website\app\main\routes.py", line 21, in index
+    return render_template("index.html", title='Explore', posts=posts.items,
+                           next_url=next_url, prev_url=prev_url)
   File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
     return _render(app, template, context)
   File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\templating.py", line 132, in _render
@@ -23,94 +23,20 @@ Traceback (most recent call last):
     raise rewrite_traceback_stack(source=source)
   File "C:\Users\payta\Documents\pyDev\my-website\app\templates\index.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "C:\Users\payta\Documents\pyDev\my-website\app\templates\base.html", line 13, in top-level template code
-    {% block content %}{% endblock %}
+  File "C:\Users\payta\Documents\pyDev\my-website\app\templates\base.html", line 20, in top-level template code
+    <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
     ^^^^^^^^^^^^^^^^^
-  File "C:\Users\payta\Documents\pyDev\my-website\app\templates\index.html", line 4, in block 'content'
-    <h1>Hi, {{ current_user.username }}!</h1>
-    ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'current_user' is undefined
-2026-06-08 20:51:48,651 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-06-08 20:51:52,704 ERROR: Exception on /index [GET] [in C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\payta\Documents\pyDev\my-website\app\routes.py", line 13, in index
-    return render_template("index.html", title='Home Page', posts=posts)
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
-    return _render(app, template, context)
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\templating.py", line 132, in _render
-    rv = template.render(context)
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
-    self.environment.handle_exception()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\payta\Documents\pyDev\my-website\app\templates\index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\payta\Documents\pyDev\my-website\app\templates\base.html", line 13, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^
-  File "C:\Users\payta\Documents\pyDev\my-website\app\templates\index.html", line 7, in block 'content'
-    {{ post.author.username }} says: <b>{{ post.body }}</b>
-    ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.models.Post object' has no attribute 'author'
-2026-06-08 20:58:26,404 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-06-08 20:59:21,039 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-06-08 21:01:30,117 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-02 23:21:59,788 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-02 23:37:57,550 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-02 23:42:30,486 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-02 23:42:35,235 ERROR: Exception on /index [GET] [in C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\payta\Documents\pyDev\my-website\app\routes.py", line 16, in index
-    if posts.has_next else None
-       ^^^^^^^^^^^^^^
-AttributeError: 'list' object has no attribute 'has_next'
-2026-07-02 23:43:50,956 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-02 23:43:55,393 ERROR: Exception on /index [GET] [in C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\payta\Documents\pyDev\my-website\app\routes.py", line 16, in index
-    if posts.has_next else None
-       ^^^^^^^^^^^^^^
-AttributeError: 'list' object has no attribute 'has_next'
-2026-07-02 23:48:01,393 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-02 23:55:47,043 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-03 00:02:02,372 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-03 00:02:18,013 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-03 00:06:13,485 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-03 00:08:06,686 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-03 00:10:23,581 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-03 00:18:24,311 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-03 00:19:17,145 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-03 00:19:37,082 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
-2026-07-03 00:23:31,430 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:27]
+  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "C:\Users\payta\Documents\pyDev\my-website\venv\Lib\site-packages\werkzeug\routing\map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+2026-07-14 23:09:55,111 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:28]
+2026-07-14 23:11:27,697 INFO: Blog startup [in C:\Users\payta\Documents\pyDev\my-website\main.py:28]
