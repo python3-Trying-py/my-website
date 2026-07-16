@@ -28,3 +28,13 @@ def links():
 @bp.route('/about_me')
 def about_me():
     return render_template("about_me.html")
+
+@bp.route('/library')
+def library():
+    books = [{"type": "book", "title": "The Prince of Milk", "color": "#58e060", "page_count": 352},
+             {"type": "book", "title": "Blade Runner", "color": "#c78be6", "page_count": 240},
+             {"type": "series", "title": "Hyperion", "color": "#f5c23e", "page_count": 2230, "book_count": 4},
+             {"type": "book", "title": "Warbreaker", "color": "#e76ebc", "page_count": 592},
+             {"type": "series", "title": "The Stromlight Archive", "color": "#ed4c4c", "page_count": 6200, "book_count": 5}
+             ]
+    return render_template("extra/library.html",books=books)

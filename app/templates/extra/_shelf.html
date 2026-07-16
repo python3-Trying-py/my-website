@@ -1,0 +1,20 @@
+    <style>
+    .shelf{
+        border-bottom: solid #745a0d 10px;
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        }
+    </style>
+
+    <body>
+        <div class="shelf">
+            {% for book in books %}
+                {% if book.type == "book" %}
+                    {% include 'extra/_book.html' %}
+                {% elif book.type == "series" %}
+                    {% include 'extra/_series.html' %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </body>

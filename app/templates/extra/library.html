@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>My Library</h1>
+    Here's some books I've read. I'm primarily interested in science-fiction and fantasy.
+    <h2>My Favorites</h2>
+        {% include 'extra/_shelf.html' %}
+    <h2>What I'm Currently Reading</h2>
+    
+
+{% endblock %}

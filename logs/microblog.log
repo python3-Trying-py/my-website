@@ -1,4 +1,4 @@
-2026-07-15 21:58:45,149 ERROR: Exception on / [GET] [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py:875]
+2026-07-16 13:54:22,118 ERROR: Exception on /library [GET] [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -9,9 +9,8 @@ Traceback (most recent call last):
   File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\main\routes.py", line 21, in index
-    return render_template("index.html", title='Explore', posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\main\routes.py", line 40, in library
+    return render_template("extra/library.html",books=books)
   File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
     return _render(app, template, context)
   File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
@@ -21,25 +20,25 @@ Traceback (most recent call last):
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
   File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\index.html", line 1, in top-level template code
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\extra\library.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\base.html", line 35, in top-level template code
-    <a class="nav-link" aria-current="page" href="{{ url_for('main.aboutme') }}">About Me</a>
-    ^^^^^^^^^
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py", line 1121, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py", line 1110, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-        endpoint,
-    ...<3 lines>...
-        force_external=_external,
-    )
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\werkzeug\routing\map.py", line 901, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.aboutme'. Did you mean 'main.about_me' instead?
-2026-07-15 21:59:15,176 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
-2026-07-15 21:59:21,723 ERROR: Exception on /aboutme [GET] [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py:875]
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\base.html", line 52, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\extra\library.html", line 7, in block 'content'
+    {% include 'extra/_shelf.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\extra\_shelf.html", line 16, in top-level template code
+    {% include 'extra/_series.html' %}
+    ^^^^^
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\extra\_series.html", line 18, in top-level template code
+    {{ series.title }}
+    ^^^^^^^^^^^^^
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'series' is undefined
+2026-07-16 13:54:35,881 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 13:54:39,377 ERROR: Exception on /library [GET] [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -50,28 +49,41 @@ Traceback (most recent call last):
   File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\main\routes.py", line 30, in about_me
-    return render_template("about_ne.html")
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
-    template = app.jinja_env.get_or_select_template(template_name_or_list)
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
-    return self._load_template(name, globals)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\jinja2\loaders.py", line 126, in load
-    source, filename, uptodate = self.get_source(environment, name)
-                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\templating.py", line 66, in get_source
-    return self._get_source_fast(environment, template)
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\templating.py", line 100, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: about_ne.html
-2026-07-15 21:59:55,979 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
-2026-07-15 22:01:01,777 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
-2026-07-15 22:11:48,043 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
-2026-07-15 22:23:01,384 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\main\routes.py", line 40, in library
+    return render_template("extra/library.html",books=books)
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\extra\library.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\base.html", line 52, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\extra\library.html", line 7, in block 'content'
+    {% include 'extra/_shelf.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\extra\_shelf.html", line 16, in top-level template code
+    {% include 'extra/_series.html' %}
+    ^^^^^
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\app\templates\extra\_series.html", line 18, in top-level template code
+    {{ series.title }}
+    ^^^^^^^^^^^^^
+  File "C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'series' is undefined
+2026-07-16 13:55:20,365 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 13:56:32,493 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 13:57:30,514 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 13:57:56,148 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 13:58:22,039 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 13:58:42,973 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 13:59:02,476 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 13:59:26,870 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 14:00:22,810 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]
+2026-07-16 14:00:35,111 INFO: Blog startup [in C:\Users\payta\OneDrive\Documents\Python Scripts\my-website\main.py:28]

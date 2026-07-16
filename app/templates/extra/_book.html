@@ -1,0 +1,22 @@
+    <style>
+    .book {
+        width: round(calc(20px + var(--book-length) * 1px / 50), 1px);
+        max-height: 16ch;
+        min-height: 12ch;
+        white-space: normal;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        text-align: center;
+        align-content: center;
+        background-color: var(--book-color);
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        }
+    </style>
+
+    <body>
+        <div class="book" style="--book-color: {{ book.color }}; --book-length: {{book.page_count}}">
+            {{ book.title }}
+        </div>
+    </body>

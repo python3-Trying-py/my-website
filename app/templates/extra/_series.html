@@ -1,0 +1,20 @@
+    <style>
+    .series {
+        height: round(calc(10px * var(--book-count) + var(--series-length) * 1px / 100), 1px);
+        width: 14ch;
+        white-space: normal;
+        text-orientation: mixed;
+        text-align: center;
+        align-content: center;
+        background-color: var(--series-color);
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        }
+    </style>
+
+    <body>
+        <div class="series" style="--series-color: {{ book.color }}; --book-count: {{book.book_count}}; --series-length: {{book.page_count}}">
+            {{ book.title }}
+        </div>
+    </body>
