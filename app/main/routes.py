@@ -24,3 +24,7 @@ def index():
 @bp.route('/links')
 def links():
     return render_template("links.html")
+
+@bp.route('/about_me')
+def about_me():
+    return render_template("about_me.html")
