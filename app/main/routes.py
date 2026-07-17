@@ -10,7 +10,10 @@ def index():
 
     page = request.args.get('page', 1, type=int)
 
-    query = sa.select(Post).order_by(Post.id.desc())
+    if current_app.debug:
+        query = sa.select(Post).order_by(Post.id.desc())
+    else:
+        query = sa.select(Post).where(Post.post_type != "Test").order_by(Post.id.desc())
     posts = db.paginate(query, page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
 
     next_url = url_for('main.index', page=posts.next_num) \

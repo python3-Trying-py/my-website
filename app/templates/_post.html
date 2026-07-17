@@ -1,15 +1,25 @@
-    <table class="table table-hover">
-        <tr>
-            <td>
-                <b>
-                    {{ post.title }}
-                </b>
-                <br>
-                <p style="color: gray;">
-                {{ post.date_posted }}
-                </p>
-                <br>
-                {{ post.body }}
-            </td>
-        </tr>
-    </table>
+    <style>
+    .postcontainer {
+        border-radius: 15px 50px 15px 15px;
+        border-color: #2d2d2d;
+        border-width: 2px;
+        border-style: solid;
+        background-color: #f9f9ff;
+        padding: 20px;
+        width: 800px;
+        height: auto;
+    }
+    </style>
+
+
+    <div class="postcontainer">
+        <h1>
+            {{ post.title }}
+        </h1>
+        <br>
+        <p style="color: gray;">
+        {{ post.date_posted }}
+        </p>
+        <br>
+        {{ post.body }}
+    </div>

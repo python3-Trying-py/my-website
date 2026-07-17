@@ -1,22 +1,66 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hello!</h1>
-    {% for post in posts %}
-        {% include '_post.html' %}
-    {% endfor %}
-    <nav aria-label="Post navigation">
-        <ul class="pagination">
-            <li class="page-item{% if not prev_url %} disabled{% endif %}">
-                <a class="page-link" href="{{ prev_url }}">
-                    <span aria-hidden="true">&larr;</span> Newer posts
-                </a>
-            </li>
-            <li class="page-item{% if not next_url %} disabled{% endif %}">
-                <a class="page-link" href="{{ next_url }}">
-                    Older posts <span aria-hidden="true">&rarr;</span>
-                </a>
-            </li>
+
+    <style>
+    .blog {
+        float: left;
+        width: 60%;
+        height: auto;
+    }
+    .sidebar {
+        float: right;
+        margin: 10px;
+        border-radius: 15px;
+        border-color: #2d2d2d;
+        border-width: 2px;
+        border-style: solid;
+        background-color: #eeeeee;
+        padding: 20px;
+        width: 30%;
+        height: auto;
+    }
+    </style>
+
+    <div class="sidebar">
+        <h2>
+            Features to add
+        </h2>
+        <ul>
+            <li>Add dropdowns for an extra section</li>
+            <li>Add book details in library</li>
+            <li>Make the css styling unique</li>
+            <li>Make the library unique</li>
         </ul>
-    </nav>
+        <h2>
+            What I'm working on
+        </h2>
+        <ul>
+            <li>A game jam</li>
+            <li>Finishing university</li>
+            <li>Getting into a grad school!</li>
+    </div>
+
+    <div class="blog">
+        <h1>My Blog</h1>
+        {% for post in posts %}
+            {% include '_post.html' %}
+            <br>
+        {% endfor %}
+
+        <nav aria-label="Post navigation">
+            <ul class="pagination">
+                <li class="page-item{% if not prev_url %} disabled{% endif %}">
+                    <a class="page-link" href="{{ prev_url }}">
+                        <span aria-hidden="true">&larr;</span> Newer posts
+                    </a>
+                </li>
+                <li class="page-item{% if not next_url %} disabled{% endif %}">
+                    <a class="page-link" href="{{ next_url }}">
+                        Older posts <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 {% endblock %}
