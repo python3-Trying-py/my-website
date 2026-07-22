@@ -10,9 +10,9 @@
     <body>
         <div class="shelf">
             {% for book in books %}
-                {% if book.type == "book" %}
+                {% if book.library_type == "book" %}
                     {% include 'extra/_book.html' %}
-                {% elif book.type == "series" %}
+                {% elif book.library_type == "series" %}
                     {% include 'extra/_series.html' %}
                 {% endif %}
             {% endfor %}

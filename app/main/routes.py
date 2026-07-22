@@ -1,6 +1,6 @@
 from flask import render_template, request, url_for, current_app
 from app import db
-from app.models import Post
+from app.models import Post, Library
 import sqlalchemy as sa
 from app.main import bp
 
@@ -11,9 +11,9 @@ def index():
     page = request.args.get('page', 1, type=int)
 
     if current_app.debug:
-        query = sa.select(Post).order_by(Post.id.desc())
+        query = sa.select(Post).order_by(Post.post_id.desc())
     else:
-        query = sa.select(Post).where(Post.post_type != "Test").order_by(Post.id.desc())
+        query = sa.select(Post).where(Post.post_type != "Test").order_by(Post.post_id.desc())
     posts = db.paginate(query, page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
 
     next_url = url_for('main.index', page=posts.next_num) \
@@ -34,10 +34,15 @@ def about_me():
 
 @bp.route('/library')
 def library():
-    books = [{"type": "book", "title": "The Prince of Milk", "color": "#58e060", "page_count": 352},
-             {"type": "book", "title": "Blade Runner", "color": "#c78be6", "page_count": 240},
-             {"type": "series", "title": "Hyperion", "color": "#f5c23e", "page_count": 2230, "book_count": 4},
-             {"type": "book", "title": "Warbreaker", "color": "#e76ebc", "page_count": 592},
-             {"type": "series", "title": "The Stromlight Archive", "color": "#ed4c4c", "page_count": 6200, "book_count": 5}
-             ]
+    series_query = sa.select(Library.title).where(Library.library_type == "series").order_by(Library.library_ID.desc())
+    series_list = db.session.scalars(series_query).all()
+
+    books_query = sa.select(Library).where(
+        (Library.library_type == "series") | ((Library.library_type == "book") & (Library.series.not_in(series_list) | Library.series.is_(None)))
+        ).order_by(Library.library_ID.asc())
+    books = db.session.scalars(books_query).all()
+
+    print(series_list)
+    print(books)
+
     return render_template("extra/library.html",books=books)
