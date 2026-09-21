@@ -2,21 +2,88 @@
 
 {% block content %}
     <style>
-    img {
+    figure {
+        display: inline-block;
+        width: max-content;
+        margin: 20px; /* adjust as needed */
+        }
+    figure img {
         float: left;
         border: 2px solid black;
-        margin: 0px 0px 15px 20px;
-        width: 200%;
+        width: 300%;
+        margin: 10px 20px 10px 20px;
         height: auto;
+        vertical-align: top;
+        }
+    figure figcaption {
+        text-align: center;
         }
     </style>
 
     <h1>About Me</h1>
-    <p>
-    <img src="static/images/Payton_motorcycle.jpg" alt="Literally me!" style="width:250px;height:300px;">
-    My name is Payton Taylor. I am a senior at Northeastern University studying physics with minors in mathematics and German. Currently, I am assisting Prof. Johan Bonilla Castro with their research, working directly under the PhD student John Aremu.
+    <figure>
+        <img src="static/images/Payton_motorcycle.jpg" alt="Literally me!" style="width:250px;height:300px;">
+        <figcaption>Me and my motorcycle, which I call Betsy</figcaption>
+    </figure>
+    <h2>Introduction</h2>
+    My name is Payton Taylor, a senior at Northeastern University studying physics with minors in mathematics and German.
+    My primary interests lie in experimental particle physics and programming.
+    I'm currently working under the Bonilla-Castro research group to verify the usability of optical data processing boards befoer they are delivered to CERN for use in the CMS experiment.
+    I'm a big fan of fantasy, science-fiction, whatever blends those two, moderately-complex boardgames, videogames, and recently music.
+    
+    <hr>
+
+    <h2>Current Work</h2>
+    I'm usually working in a few different ways at any given time. I like to make sure I always have some profesional work going on, a developmental personal project, and something thats just plain fun.
+    
+    <div style="padding-left: 2em;">
+    <h3>Professional</h3>
+    I am currently a memeber of the Bonilla-Castro research group, which is a member of CERN's CMS experiment.
+    I myself have been working on testing and evaluating the optical boards that will be used to process the data collected during the CMS experiment.
+    To this end, I have developed software to evaluate the viability of hardware used in testing and assisted int he verification of testing software and board testing.
+    <h3>Personal</h3>
+    Currently, I am working on a piece of software called Spindle! It's a CAIN exorcist management software thats I am building using Python.
+    I recently started playing CAIN(Which is great, I highly recommend if you are looking for a darker TTRPG) and I thought it would be really cool to make  adigital character sheet for it.
+    I've been wanting to develop a games package for python for a long while now and before I jump into that I figured it would be good to work on a character manager to give me a better idea of how I would want to apporach the design of such a package.
+    And thus was born Spindle.
+    I'd love to publish the software publically but I'm currently not certain of the licensing constraints surrounding it, given that I do not own CAIN.
     <br>
-    I like boardgames, tabletop rpgs, card games, and video games.
-    </p>
+    <h3>My Fun Project</h3>
+    My current fun project is learning piano.
+    I don't really have a definite end goal here, just a nebulous sense of wanting to be able to play a few pieces, but I am enjoying it so far.
+    As of current, I am self-taught and I've learned Toby Fox's "Piano That May Not Be Played That Well" and I'm currently working on Toby Fox's "Waiting Room".(Wow I wonder if this guy's a Deltarune fan...)
+    </div>
+    
+    <hr>
+
+    <h2>Fun Stuff</h2>
+    As I said in the introduction, I am a big fan of boardgames and cardgames, the ones with lots of rules but not too many rules.
+    Some of my favorites are Scythe, Everdell, Compile, and MTG.
+
+    <hr>
+
+    <h2>My Ethos on AI</h2>
+    I am no expert in AI but I do know there are two primary types of AI that are discussed in the modern day: Analytical and Generative.
+    As far as analytical AI is concerned, I believe it is an extremely helpful tool that streamlines and quickens many processes while increasing their accuracy, when proper training and testing is done.
+    However, analytical AI seems to not be a strong point of contention, that goes to generative AI.
+    <br>
+    <div style="padding-left: 2em;">
+    <h3>Art</h3>
+    Generative AI has a lot of discourse surrounding it and I think it's important that people have an opinion to weigh in on the issue with; Mine is as follows:
+    Generative AI has no place in the creative fields, those being art, writing, music production, film-making, and all other related fields.
+    Generative AI, like analytical AI, is a tool, but it is important to not ball peen hammer on nails.
+    <h3>Programming</h3>
+    Generative AI is a very helpful tool in coding but it is also extremely dangerous to one's ability as a programmer.
+    LLMs should never be used to code something that you yourself cannot code.
+    I think it is incredibly important that AI only be used in coding to save time and not to supplement your knowledge.
+    For example, when writing the database models for this website I employed AI to generate the python classes. I know how to actually do this, but it saves time because its not a lightning fast process to type out "library_ID: so.Mapped[int] = so.mapped_column(sa.Integer, primary_key=True)" several times.
+    But if I need to do something I've never done before and don't know how to do, I sit down, read documentation till I hate it, write bad code, debug it, and repeat that process until I've written a solid verison of what I had envisioned.
+    <h3>Research and Learning</h3>
+    If you need to do actualy research: No. Close Claude, gpt, gemini, or whatever model you would use and open your preferrd internet browser.
+    Proper research requires you to find reliable sources and read the whole story they present.
+    Seriously, if you are using AI to do your research for you, then I immediately distrust your take and think less of your ability to collect information.
+    As for learning, my opinion is largely the same. However, I do think LLMs can play a role is learning when deployed properly.
+    Let me clarify: I do NOT think AI should be used in the classroom(Teachers exist for a reason), but I find that AI can be helpful for studying and prcticing outside the classroom(e.g. generating practice problems that test specific areas)
+    </div>    
 
 {% endblock %}
